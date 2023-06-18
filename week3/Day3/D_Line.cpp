@@ -40,15 +40,11 @@ void solve(){
             b[i] = n - i - 1;
         }
     }
-    // for(auto v : a) cout << v << ' ';
-    // cout << '\n';
-    // for(auto v : b) cout << v << ' ';
     vpair vp(n);
     for(int i = 0; i < n; i++){
         vp[i] = {b[i],a[i]};
     }
     sort(vp.begin(), vp.end(), greater<pair<ll,ll>>());
-    // for(auto v : vp) cout << v.first << ' ' << v.second << '\n';
     for(int i = 0; i < n; i++){
         if(vp[i].first > vp[i].second){
             ans = ans + vp[i].first - vp[i].second;
@@ -56,18 +52,6 @@ void solve(){
         cout << ans << ' ';
     }
     cout << '\n';
-    // cout << ans;
-    // for(int i = 0; i < n; i++){
-    //     cnt.pub({max(i, n - i - 1), min(i, n - i - 1)});
-    // }
-    // sort(cnt.begin(), cnt.end(), greater<pair<ll,ll>>());
-    // for(auto v : cnt){
-    //     ll add = max(v.first,v.second);
-    //     ll mns = min(v.first,v.second);
-    //     ans += add; ans -= mns;
-    //     cout << ans << ' ';
-    // }
-    // cout << '\n';
 }
 int main(){
     fast
