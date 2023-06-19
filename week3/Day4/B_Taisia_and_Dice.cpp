@@ -4,6 +4,7 @@
 
 #include <bits/stdc++.h>
 using namespace std;
+using namespace std;
 #define ll long long int
 #define vpair vector<pair<ll, ll>>
 #define PI 3.14159265359
@@ -15,8 +16,25 @@ using namespace std;
 #define fast ios_base::sync_with_stdio(false);\
     cin.tie(NULL);
 
+void solve(){
+    int n, s, r;
+    cin >> n >> s >> r;
+    int mx = s - r;
+    cout << mx;
+    for(int i = 2; i <= n; i++){
+        int mn_value = n - i;
+        int cur = r - mn_value;
+        mx = min(mx , cur);
+        cout << ' ' << mx;
+        r -= mx;
+    }
+    cout << '\n';
+}
 int main(){
     fast
-    int n = 123456789012 ^ 123456789012;
-    cout << n;
+    int t; 
+    cin >> t;
+    while(t--){
+        solve();
+    }
 }
