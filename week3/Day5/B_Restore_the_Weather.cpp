@@ -17,25 +17,21 @@ using namespace std;
     cin.tie(NULL);
 
 void solve(){
-    int n; cin >> n;
-    vector<string> s(n);
-    map<char,ll> first, last;
-    map<string, ll> occ;
+    int n, m; cin >> n >> m;
+    vector<pair<int,int>> a(n);
+    vector<int> b(n), ans(n);
     for(int i = 0; i < n; i++){
-        cin >> s[i];
-        first[s[i][0]]++;
-        last[s[i][1]]++;
-        occ[s[i]]++;
+        cin >> a[i].first;
+        a[i].second = i;
     }
-    ll ans = 0;
+    for(auto &i : b) cin >> i;
+    sort(a.begin(), a.end());
+    sort(b.begin(), b.end());
     for(int i = 0; i < n; i++){
-        ans += first[s[i][0]] - occ[s[i]];
-        ans += last[s[i][1]] - occ[s[i]];
-        first[s[i][0]]--;
-        last[s[i][1]]--;
-        occ[s[i]]--;      
+        ans[a[i].second] = b[i];
     }
-    print(ans);
+    for(auto v : ans) cout << v << ' ';
+    cout << '\n';
 }
 int main(){
     fast

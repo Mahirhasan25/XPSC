@@ -18,24 +18,28 @@ using namespace std;
 
 void solve(){
     int n; cin >> n;
-    vector<string> s(n);
-    map<char,ll> first, last;
-    map<string, ll> occ;
+    vector<int> a(n);
+    ll sum = 0;
     for(int i = 0; i < n; i++){
-        cin >> s[i];
-        first[s[i][0]]++;
-        last[s[i][1]]++;
-        occ[s[i]]++;
+        cin >> a[i]; 
+        int pls = 0;
+        if(a[i] < 0){
+            pls = -1 * a[i];
+            sum += pls;
+            continue;
+        }
+        sum += a[i];
     }
-    ll ans = 0;
+    // cout << sum;
+    int cnt = 0;bool flag = true;
     for(int i = 0; i < n; i++){
-        ans += first[s[i][0]] - occ[s[i]];
-        ans += last[s[i][1]] - occ[s[i]];
-        first[s[i][0]]--;
-        last[s[i][1]]--;
-        occ[s[i]]--;      
+        if(a[i] < 0 and flag == true){
+            cnt++;
+            flag = false;
+        }else if(a[i] > 0)
+            flag = true;
     }
-    print(ans);
+    cout << sum << ' ' << cnt <<'\n';
 }
 int main(){
     fast

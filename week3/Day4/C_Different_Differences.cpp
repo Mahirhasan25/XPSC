@@ -17,25 +17,22 @@ using namespace std;
     cin.tie(NULL);
 
 void solve(){
-    int n; cin >> n;
-    vector<string> s(n);
-    map<char,ll> first, last;
-    map<string, ll> occ;
-    for(int i = 0; i < n; i++){
-        cin >> s[i];
-        first[s[i][0]]++;
-        last[s[i][1]]++;
-        occ[s[i]]++;
+    int n, m;
+    cin >> n >> m;
+    vector<int> dis;
+    int difference = m - 1;
+    int j = 1;
+    int diff = 1;
+    for(int i = 1; i <= n; i++){
+        cout << j << ' ';
+        if(m - (j + diff) >= n - (i + 1)){
+            j = j + diff; 
+            diff++;
+        }
+        else
+            j++;
     }
-    ll ans = 0;
-    for(int i = 0; i < n; i++){
-        ans += first[s[i][0]] - occ[s[i]];
-        ans += last[s[i][1]] - occ[s[i]];
-        first[s[i][0]]--;
-        last[s[i][1]]--;
-        occ[s[i]]--;      
-    }
-    print(ans);
+    cout << '\n';
 }
 int main(){
     fast

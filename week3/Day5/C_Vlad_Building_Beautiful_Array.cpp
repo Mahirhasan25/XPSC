@@ -17,25 +17,21 @@ using namespace std;
     cin.tie(NULL);
 
 void solve(){
+    vector<int> odd, even;
     int n; cin >> n;
-    vector<string> s(n);
-    map<char,ll> first, last;
-    map<string, ll> occ;
     for(int i = 0; i < n; i++){
-        cin >> s[i];
-        first[s[i][0]]++;
-        last[s[i][1]]++;
-        occ[s[i]]++;
+        int in; cin >> in;
+        if(in % 2 ==0){
+            even.pub(in);
+        }else{
+            odd.pub(in);
+        }
     }
-    ll ans = 0;
-    for(int i = 0; i < n; i++){
-        ans += first[s[i][0]] - occ[s[i]];
-        ans += last[s[i][1]] - occ[s[i]];
-        first[s[i][0]]--;
-        last[s[i][1]]--;
-        occ[s[i]]--;      
-    }
-    print(ans);
+    sort(even.begin(), even.end());  
+    sort(odd.begin(), odd.end());
+    if(even[0] < odd[0]) cout << "NO" << '\n';
+    else cout << "YES" << '\n'; 
+
 }
 int main(){
     fast
