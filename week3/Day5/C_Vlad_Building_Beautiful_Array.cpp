@@ -17,15 +17,18 @@ using namespace std;
     cin.tie(NULL);
 
 void solve(){
-    vector<int> odd, even;
-    int n; cin >> n;
+    vector<ll> odd, even;
+    ll n; cin >> n;
     for(int i = 0; i < n; i++){
-        int in; cin >> in;
+        ll in; cin >> in;
         if(in % 2 ==0){
             even.pub(in);
         }else{
             odd.pub(in);
         }
+    }
+    if(even.size() == n or odd.size() == n){
+        print("YES"); return;
     }
     sort(even.begin(), even.end());  
     sort(odd.begin(), odd.end());

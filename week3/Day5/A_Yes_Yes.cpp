@@ -4,6 +4,7 @@
 
 #include <bits/stdc++.h>
 using namespace std;
+using namespace std;
 #define ll long long int
 #define vpair vector<pair<ll, ll>>
 #define PI 3.14159265359
@@ -14,16 +15,24 @@ using namespace std;
 #define pob pop_back
 #define fast ios_base::sync_with_stdio(false);\
     cin.tie(NULL);
-ll fun(ll x){
-    if(x % 4 == 0) return x;
-    if(x % 4 == 1) return 1;
-    if(x % 4 == 2) return x + 1;
-    return 0;
+
+void solve(){
+    string t = "Yes";
+    string s = "";
+    for(int i = 0; i < 18; i++){
+        s += t;
+    }
+    string in; cin >> in;
+    if(s.find(in) != -1)
+    print("YES");
+    else
+    print("NO");
 }
 int main(){
     fast
-    ll n, m; 
-    cin >> n >> m;
-    ll ans = fun(n - 1) ^ fun(m);
-    cout << ans;
+    int t; 
+    cin >> t;
+    while(t--){
+        solve();
+    }
 }
