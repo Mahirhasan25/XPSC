@@ -29,9 +29,9 @@ void solve(){
         }
         if(unq > 3){
             cnt++;
+            unq = 1;
             mp.clear();
             mp[s[i]] = true;
-            unq = 1;
         }
         i++;
     }

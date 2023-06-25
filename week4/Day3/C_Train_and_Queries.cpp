@@ -18,25 +18,22 @@
 using namespace std;
 
 void solve(){
-    string s;
-    cin >> s;
-    map<char,bool> mp;
-    int i = 0, cnt = 0, unq = 0;
-    while(i < s.size()){
-        if(mp[s[i]] == false){
-            unq++;
-            mp[s[i]] = true;
-        }
-        if(unq > 3){
-            cnt++;
-            mp.clear();
-            mp[s[i]] = true;
-            unq = 1;
-        }
-        i++;
+    int n, q;
+    cin >> n >> q;
+    map<int,int> left,right;
+    for(int i = 1; i <= n; i++){
+        int in; cin >> in;
+        if(left[in] == 0)
+            left[in] = i;
+        right[in] = i;
     }
-    cnt++;
-    print(cnt);
+    while(q--){
+        int x, y;
+        cin >> x >> y;
+        if(left[x] and right[y] and left[x] < right[y]){
+            cyes;
+        }else cno;
+    }
 }
 int main(){
     fast

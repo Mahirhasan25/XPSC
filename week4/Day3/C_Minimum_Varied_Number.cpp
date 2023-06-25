@@ -18,25 +18,15 @@
 using namespace std;
 
 void solve(){
-    string s;
-    cin >> s;
-    map<char,bool> mp;
-    int i = 0, cnt = 0, unq = 0;
-    while(i < s.size()){
-        if(mp[s[i]] == false){
-            unq++;
-            mp[s[i]] = true;
+    int sum; cin >> sum;
+    string s = "";
+    for(int i = 9; i >= 1; i--){
+        if(sum >= i){
+            s = char(i + '0') + s;
+            sum -= i;
         }
-        if(unq > 3){
-            cnt++;
-            mp.clear();
-            mp[s[i]] = true;
-            unq = 1;
-        }
-        i++;
     }
-    cnt++;
-    print(cnt);
+    print(s);
 }
 int main(){
     fast
