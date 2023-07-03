@@ -19,40 +19,34 @@
 using namespace std;
 
 void solve(){
-    ll n; cin >> n;
-    vector<ll> v(n);
-    ll mx = 0;
-    for(ll i = 0; i < n; i++){
-        cin >> v[i];
+    int n;
+    char c;
+    cin >> n >> c;
+    string s; cin >> s;
+    s += s;
+    int i;
+    for(i = 0; i < s.size(); i++){
+        if(s[i] == c) break;
     }
-
-    vector<ll> pre(n);
-    pre[0] = v[0];
-    for(ll i = 1; i < n; i++){
-        pre[i] = pre[i - 1] + v[i];
-    }
-
-    ll ans = 2003;
-    for(ll x = 0; x < n; x++){
-        ll i = 0, j = 0, sum = 0, len = 0;
-        while(j < n){
-            sum += v[j];
-            if(sum == pre[x]){
-                len = max(len, j - i + 1);
-                i = j;
-                i++;
-                sum = 0;
+    int j = i, k = i;
+    int ans = 0;
+    while(k < s.size()){
+        if(s[k] == 'g'){
+            ans = max(ans, k - j);
+            k++;
+            while(s[k] != c and k < s.size()){
+                k++;
             }
-            j++;
+            j = k;
+            k--;
         }
-        if(sum == 0)
-            ans = min(ans, len);
+        k++;
     }
     print(ans);
 }
 int main(){
     fast
-    ll t; 
+    int t; 
     cin >> t;
     while(t--){
         solve();

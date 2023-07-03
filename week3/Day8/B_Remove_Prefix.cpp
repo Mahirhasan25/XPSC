@@ -3,31 +3,36 @@
 */
 
 #include <bits/stdc++.h>
-using namespace std;
-using namespace std;
 #define ll long long int
 #define vpair vector<pair<ll, ll>>
 #define PI 3.14159265359
 #define cyes cout << "YES" << '\n'
 #define cno cout << "NO" << '\n'
 #define print(x) cout << x << '\n'
+#define minus cout << "-1" << '\n'
 #define pub push_back
 #define pob pop_back
+#define all(x) (x).begin(),(x).end()
 #define fast ios_base::sync_with_stdio(false);\
     cin.tie(NULL);
-int fun(string s){
-    if(s.back() == 'M') return 0;
-    if(s.back() == 'L') return s.size();
-    return -s.size(); 
-}
+using namespace std;
+
 void solve(){
-    string a, b;
-    cin >> a >> b;
-    int x = fun(a);
-    int y = fun(b);
-    if(x > y) print(">");
-    else if( x < y) print("<");
-    else print("=");
+    int n; cin >> n;
+    vector<int> v(n);
+    for(int i = 0; i < n; i++){
+        cin >> v[i];
+    }
+    reverse(all(v));
+    int cnt = 0;
+    map<int, bool> mp;
+    for(int i = 0; i < n; i++){
+        if(mp[v[i]] != true){
+            cnt++;
+            mp[v[i]] = true;
+        }else break;
+    }
+    print(n-cnt);
 }
 int main(){
     fast
