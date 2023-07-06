@@ -12,27 +12,29 @@
 #define minus cout << "-1" << '\n'
 #define pub push_back
 #define pob pop_back
+#define rep(x, y) for(int i = x; i < y; i++)
 #define all(x) (x).begin(),(x).end()
 #define fast ios_base::sync_with_stdio(false);\
     cin.tie(NULL);
 using namespace std;
 
 void solve(){
-    int n, q;
-    cin >> n >> q;
-    map<int,int> left,right;
-    for(int i = 1; i <= n; i++){
-        int in; cin >> in;
-        if(left[in] == 0)
-            left[in] = i;
-        right[in] = i;
+    int n;
+    string s;
+    cin >> n;
+    cin >> s; 
+    // cout << n << s;
+    stack<char> st;
+    for(int i = 0; i < n; i++){
+        if(s[i] != '('){
+            if((st.empty() and s[i] != ':'))
+                continue;
+            else st.push(s[i]);
+        }
     }
-    while(q--){
-        int x, y;
-        cin >> x >> y;
-        if(left[x] and right[y] and left[x] < right[y]){
-            cyes;
-        }else cno;
+    while(!st.empty()){
+        cout << st.top() << ' ';
+        st.pop();
     }
 }
 int main(){

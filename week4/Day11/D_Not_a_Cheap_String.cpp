@@ -12,28 +12,39 @@
 #define minus cout << "-1" << '\n'
 #define pub push_back
 #define pob pop_back
+#define rep(x, y) for(int i = x; i < y; i++)
 #define all(x) (x).begin(),(x).end()
 #define fast ios_base::sync_with_stdio(false);\
     cin.tie(NULL);
 using namespace std;
 
 void solve(){
-    int n, q;
-    cin >> n >> q;
-    map<int,int> left,right;
-    for(int i = 1; i <= n; i++){
-        int in; cin >> in;
-        if(left[in] == 0)
-            left[in] = i;
-        right[in] = i;
+    string s; cin >> s;
+    int p; cin >> p;
+    string w(s);
+
+    ll cost = 0;
+    for(int i = 0; i < s.size(); i++)
+        cost += s[i] - 'a' + 1;
+
+    sort(w.rbegin(), w.rend());
+    map<char, int> del;
+
+    for(int i = 0; i < w.size(); i++){
+        if(cost > p){
+            del[w[i]]++;
+            cost -= w[i] - 'a' + 1;
+        }
     }
-    while(q--){
-        int x, y;
-        cin >> x >> y;
-        if(left[x] and right[y] and left[x] < right[y]){
-            cyes;
-        }else cno;
+
+    for(int i = 0; i < s.size(); i++){
+        if(del[s[i]] > 0){
+            del[s[i]]--;
+            continue;
+        }
+        cout << s[i];
     }
+    cout << '\n';
 }
 int main(){
     fast
