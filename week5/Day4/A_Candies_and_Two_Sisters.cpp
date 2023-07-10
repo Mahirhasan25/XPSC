@@ -9,6 +9,7 @@
 #define cyes cout << "YES" << '\n'
 #define cno cout << "NO" << '\n'
 #define print(x) cout << x << '\n'
+#define minus cout << "-1" << '\n'
 #define pub push_back
 #define pob pop_back
 #define rep(x, y) for(int i = x; i < y; i++)
@@ -17,24 +18,17 @@
     cin.tie(NULL);
 using namespace std;
 
+void solve(){
+    int n; cin >> n;
+    if(n % 2 == 0)
+        print(n/2 - 1);
+    else print(n/2);
+}
 int main(){
     fast
-    ll n; cin >> n;
-    vector<ll> a(n+1);
-    ll tot_sum = 0, od_sum = 0, ev_sum = 0;
-    for(ll i = 1; i <= n; i++){
-        cin >> a[i];
-        if(i % 2 == 0)
-            ev_sum += a[i];
-        tot_sum += a[i];
+    int t; 
+    cin >> t;
+    while(t--){
+        solve();
     }
-    int ans = 0;
-    for(int i = 1; i <= n; i++){
-        if(i % 2 != 0)
-            od_sum = tot_sum - (ev_sum + a[i]);
-        else
-            ev_sum = tot_sum - (od_sum + a[i]);
-        if(od_sum == ev_sum) ans++;
-    }
-    print(ans);
 }
