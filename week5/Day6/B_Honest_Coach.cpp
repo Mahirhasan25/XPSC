@@ -20,39 +20,16 @@ using namespace std;
 
 void solve(){
     int n; cin >> n;
-    vector<int> v[n];
-    map<int,int> mp;
+    vector<int> v(n);
+    int mn = INT_MAX;
     for(int i = 0; i < n; i++){
-        int m; cin >> m;
-        v[i].resize(m);
-        for(int j = 0; j < m; j++){
-            cin >> v[i][j];
-            mp[v[i][j]]++;
-        }
+        cin >> v[i];
     }
-
-    vector<int> ans;
-    for(int i = 0; i < n; i++){
-        bool ok = true;
-        for(int j = 0; j < v[i].size(); j++){
-            if(mp[v[i][j]] == 1){
-                if(ok){
-                    ans.pub(v[i][j]);
-                    ok = false;
-                }
-            }
-            mp[v[i][j]]--;
-        }
+    sort(all(v));
+    for(int i = 0; i < n - 1; i++){
+        mn = min(mn,abs(v[i] - v[i+1]));
     }
-
-    if(ans.size() != n){
-        cout << -1;
-    }else{
-        for(auto i : ans){
-            cout << i << ' ';
-        }
-    }
-    cout << '\n';
+    print(mn);
 }
 int main(){
     fast
