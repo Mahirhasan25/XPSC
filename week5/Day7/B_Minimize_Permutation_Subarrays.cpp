@@ -19,18 +19,20 @@
 using namespace std;
 
 void solve(){
-    ll n; cin >> n;
-    if(n % 2 != 0){
-        cyes; return;
+    int n; cin >> n;
+    int idx_n= -1, idx_1 = -1, idx_2 = -1;
+    for(int i = 1; i <= n; i++){
+        int in; cin >> in;
+        if(in == 1) idx_1 = i;
+        else if(in == 2) idx_2 = i;
+        else if(in == n) idx_n = i;
     }
-    while(n != 1){
-        if(n % 2 != 0){
-            break;
-        }
-        n /= 2;
-    }
-    if(n == 1) cno;
-    else cyes;
+    if(idx_n > idx_1 && idx_n > idx_2)
+        cout << idx_n << ' ' << max(idx_1, idx_2) << '\n';
+    else if(idx_n < idx_1 && idx_n < idx_2)
+        cout << idx_n << ' ' << min(idx_1, idx_2) << '\n';
+    else cout << "1 1" << '\n';
+    
 }
 int main(){
     fast

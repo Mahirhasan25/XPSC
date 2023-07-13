@@ -19,18 +19,13 @@
 using namespace std;
 
 void solve(){
-    ll n; cin >> n;
-    if(n % 2 != 0){
-        cyes; return;
+    int n; cin >> n;
+    vector<int> cnt(3);
+    for(int i = 0; i < n; i++){
+        int in; cin >> in;
+        cnt[in % 3]++;
     }
-    while(n != 1){
-        if(n % 2 != 0){
-            break;
-        }
-        n /= 2;
-    }
-    if(n == 1) cno;
-    else cyes;
+    cout << cnt[0] + min(cnt[1], cnt[2]) + abs(cnt[1] - cnt[2])/3 << '\n';
 }
 int main(){
     fast

@@ -9,7 +9,6 @@
 #define cyes cout << "YES" << '\n'
 #define cno cout << "NO" << '\n'
 #define print(x) cout << x << '\n'
-#define minus cout << "-1" << '\n'
 #define pub push_back
 #define pob pop_back
 #define rep(x, y) for(int i = x; i < y; i++)
@@ -18,25 +17,18 @@
     cin.tie(NULL);
 using namespace std;
 
-void solve(){
-    ll n; cin >> n;
-    if(n % 2 != 0){
-        cyes; return;
-    }
-    while(n != 1){
-        if(n % 2 != 0){
-            break;
-        }
-        n /= 2;
-    }
-    if(n == 1) cno;
-    else cyes;
-}
 int main(){
     fast
-    int t; 
-    cin >> t;
-    while(t--){
-        solve();
+    vector<int> v(4);
+    int mx = -1;
+    for(int i = 0; i < 4; i++){
+        cin >> v[i];
+        mx = max(mx, v[i]);
     }
+    for(int i = 0; i < 4; i++){
+        if(v[i] != mx){
+            cout << abs(mx - v[i]) << ' ';
+        }
+    }
+    cout << '\n';
 }

@@ -19,18 +19,23 @@
 using namespace std;
 
 void solve(){
-    ll n; cin >> n;
-    if(n % 2 != 0){
-        cyes; return;
+    int n; cin >> n;
+    map<int,int> idx;
+    map<int, int> mp;
+    for(int i = 0; i < n; i++){
+        int in; cin >> in;
+        idx[in] = i;
+        mp[in]++;
     }
-    while(n != 1){
-        if(n % 2 != 0){
+    bool ok = true;
+    for(auto i : mp){
+        if(i.second == 1){
+            print(idx[i.first] + 1);
+            ok = false;
             break;
         }
-        n /= 2;
     }
-    if(n == 1) cno;
-    else cyes;
+    if(ok) print(-1);
 }
 int main(){
     fast
