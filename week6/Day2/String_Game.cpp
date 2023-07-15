@@ -19,21 +19,27 @@
 using namespace std;
 
 void solve(){
-    int n; cin >> n;
-    vector<int> v(n);
-    vector<int> diff;
-    for(int i = 0; i < n; i++) cin >> v[i];
-
-    diff.pub(abs(v[0] - v[1]));
-    diff.pub(abs(v[n - 1] - v[n - 2]));
-    
-    for(int i = 1; i < n - 1; i++){
-        diff.pub(max(abs(v[i] - v[i - 1]), abs(v[i] - v[i + 1])));
+    int sz; cin >> sz;
+    string s; cin >> s;
+    bool r_w = true, z_w = false;
+    stack<char> st;
+    for(int i = 0; i < sz; i++){
+        if(!st.empty() and s[i] != st.top()){
+            st.pop();
+            if(r_w){
+                r_w = false;
+                z_w = true;
+                continue;
+            }else{
+                z_w = false;
+                r_w = true;
+                continue;
+            }
+        }
+        st.push(s[i]);
     }
-    int mn = INT_MAX;
-    for(auto i : diff)
-        mn = min(mn, i);
-    print(mn);
+    if(r_w) print("Ramos");
+    else print("Zlatan");
 }
 int main(){
     fast

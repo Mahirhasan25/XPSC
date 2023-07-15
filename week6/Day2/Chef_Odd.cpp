@@ -19,21 +19,18 @@
 using namespace std;
 
 void solve(){
-    int n; cin >> n;
-    vector<int> v(n);
-    vector<int> diff;
-    for(int i = 0; i < n; i++) cin >> v[i];
-
-    diff.pub(abs(v[0] - v[1]));
-    diff.pub(abs(v[n - 1] - v[n - 2]));
-    
-    for(int i = 1; i < n - 1; i++){
-        diff.pub(max(abs(v[i] - v[i - 1]), abs(v[i] - v[i + 1])));
-    }
-    int mn = INT_MAX;
-    for(auto i : diff)
-        mn = min(mn, i);
-    print(mn);
+    ll n, k;
+    cin >> n >> k;
+    ll od_num, ev_num;
+    if(n & 1)
+        od_num = (n / 2) + 1;
+    else
+        od_num = n / 2;
+    if(n >= 2*k){
+        int left_od = od_num - k;
+        if(left_od & 1) cno;
+        else cyes;
+    }else cno;
 }
 int main(){
     fast

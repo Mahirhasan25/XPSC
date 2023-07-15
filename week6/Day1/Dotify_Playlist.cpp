@@ -22,16 +22,17 @@ void solve(){
     int n, k, l;
 
     cin >> n >> k >> l;
-    vector<int> v;
+    vector<ll> v;
     for(int i = 0; i < n; i++){
-        int ln, lg;
+        ll ln, lg;
         cin >> ln >> lg;
         if(lg == l)
             v.pub(ln);
     }
 
     if(v.empty()){
-        print(-1);return;
+        print(-1);
+        return;
     }
     sort(all(v), greater<int>());
 
@@ -46,6 +47,7 @@ void solve(){
     if(i == k)
         print(sum);
     else print(-1);
+    
 }
 int main(){
     fast

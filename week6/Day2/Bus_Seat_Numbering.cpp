@@ -20,20 +20,13 @@ using namespace std;
 
 void solve(){
     int n; cin >> n;
-    vector<int> v(n);
-    vector<int> diff;
-    for(int i = 0; i < n; i++) cin >> v[i];
-
-    diff.pub(abs(v[0] - v[1]));
-    diff.pub(abs(v[n - 1] - v[n - 2]));
-    
-    for(int i = 1; i < n - 1; i++){
-        diff.pub(max(abs(v[i] - v[i - 1]), abs(v[i] - v[i + 1])));
-    }
-    int mn = INT_MAX;
-    for(auto i : diff)
-        mn = min(mn, i);
-    print(mn);
+    if(n >= 1 and 10 >= n)
+        print("Lower Double");
+    else if(n >= 11 and 15 >= n)
+        print("Lower Single");
+    else if(n >= 16 and 25 >= n)
+        print("Upper Double");
+    else print("Upper Single");
 }
 int main(){
     fast
