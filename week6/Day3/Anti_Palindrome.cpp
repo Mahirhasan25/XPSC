@@ -17,18 +17,32 @@
 #define fast ios_base::sync_with_stdio(false);\
     cin.tie(NULL);
 using namespace std;
-ll fun(int k){
-    int mod = 1e9 + 7;
-    int ans = 1;
-    for(int i = 1; i <= k; i++)
-        ans = (ans * i) % mod;
-    return ans;
-}
+
 void solve(){
-    int n, k;
-    cin >> n >> k;
-    int per = fun(k);
-    print(per);
+    int n; cin >> n;
+    string s; cin >> s;
+    map<char, int> mp;
+    bool ok = true;
+    for(int i = 0; i < n - 1; i++){
+        if(s[i] != s[i + 1]) ok = false;
+        mp[s[i]]++;
+        if(i + 1 == n - 1)
+            mp[s[i + 1]]++;
+    }
+    if(ok){
+        if(s.size() & 1)
+            print(2);
+        else print(1);
+    }else{
+        int od_ch_cnt = 0;
+        for(auto i : mp){
+            if(i.second & 1){
+                od_ch_cnt++;
+            }
+        }
+        if(od_ch_cnt >= 2) print(0);
+        else print(1);
+    }
 }
 int main(){
     fast

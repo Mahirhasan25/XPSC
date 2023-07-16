@@ -17,18 +17,23 @@
 #define fast ios_base::sync_with_stdio(false);\
     cin.tie(NULL);
 using namespace std;
-ll fun(int k){
-    int mod = 1e9 + 7;
-    int ans = 1;
-    for(int i = 1; i <= k; i++)
-        ans = (ans * i) % mod;
-    return ans;
-}
+
 void solve(){
-    int n, k;
-    cin >> n >> k;
-    int per = fun(k);
-    print(per);
+    int n; cin >> n;
+    vector<int> a(n);
+    for(int i = 0; i < n; i++) cin >> a[i];
+
+    for(int i = 0; i < n - 1; i++){
+        for(int j = i+1; j < n; j++){
+        int dis = abs(a[i] - a[j]);
+            for(int k = j + 1; k < n; k++){
+                if(dis == abs(a[j] - a[k])){
+                    cno; return;
+                }
+            }
+        }
+    }
+    cyes;
 }
 int main(){
     fast
