@@ -19,27 +19,22 @@
 using namespace std;
 
 void solve(){
-    int n; cin >> n;
-    string s; cin >> s;
-    map<char, int> mp;
-    bool ok = true;
-    for(int i = 0; i < n - 1; i++){
-        if(s[i] != s[i + 1]) ok = false;
-        mp[s[i]]++;
+    vector<int> a(4);int mx = -1;
+    for(int i = 0; i < 4; i++){
+        cin >> a[i];
+        mx = max(mx, a[i]);
     }
-    if(ok){
-        if(s.size() > 2)
-            print(2);
-        else print(1);
-    }else{
-        int od_ch_cnt = 0;
-        for(auto i : mp){
-            if(i.second & 1) 
-                od_ch_cnt++;
+    int sum = 0;
+    map<int, bool> mp;
+    for(int i = 0; i < 4; i++){
+        if(a[i] == mx and mp[a[i]] == false){
+            mp[a[i]] = true;
+            continue;
         }
-        if(od_ch_cnt >= 2) print(0);
-        else print(1);
+        sum += a[i];
     }
+    if(mx > sum) cyes;
+    else cno;
 }
 int main(){
     fast

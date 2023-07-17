@@ -19,27 +19,14 @@
 using namespace std;
 
 void solve(){
-    int n; cin >> n;
-    string s; cin >> s;
-    map<char, int> mp;
-    bool ok = true;
-    for(int i = 0; i < n - 1; i++){
-        if(s[i] != s[i + 1]) ok = false;
-        mp[s[i]]++;
-    }
-    if(ok){
-        if(s.size() > 2)
-            print(2);
-        else print(1);
-    }else{
-        int od_ch_cnt = 0;
-        for(auto i : mp){
-            if(i.second & 1) 
-                od_ch_cnt++;
-        }
-        if(od_ch_cnt >= 2) print(0);
-        else print(1);
-    }
+    int x, n;
+    cin >> x >> n;
+    int mid;
+    if(x & 1)
+        mid = (x / 2) + 1;
+    else mid = x / 2;
+    if(mid <= n) print("YES");
+    else print("NO");
 }
 int main(){
     fast
