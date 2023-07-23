@@ -1,4 +1,3 @@
-
 /*
        || Mahir Hasan ||
 */
@@ -20,20 +19,10 @@
 using namespace std;
 
 void solve(){
-    int n; cin >> n;
-    int ans;
-    ll p = 1;
-    while(true)
-    {
-        if(p == n){
-            print(p - 1); return;
-        }
-        if(p > n){
-            ans = p/2; break;
-        }
-        p *= 2;
-    }
-    print(ans - 1);
+    int x, y;
+    cin >> x >> y;
+    if(x + y <= 6) cno;
+    else cyes;
 }
 int main(){
     fast

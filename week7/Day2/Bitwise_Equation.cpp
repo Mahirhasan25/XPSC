@@ -1,4 +1,3 @@
-
 /*
        || Mahir Hasan ||
 */
@@ -20,20 +19,31 @@
 using namespace std;
 
 void solve(){
-    int n; cin >> n;
-    int ans;
-    ll p = 1;
-    while(true)
-    {
-        if(p == n){
-            print(p - 1); return;
+    ll a = 1, b = 4, c = 0, d = 0;
+    ll n; 
+    cin >> n;
+    bool flag = false;
+    for(ll c_ = 1; c_ <= 1e9; c_++){
+        ll x = c_ ^ n;
+        if(x >= 1LL && x <= 1e18){
+            d = x;
+            c = c_;
+            flag = true;
+            break;
         }
-        if(p > n){
-            ans = p/2; break;
-        }
-        p *= 2;
     }
-    print(ans - 1);
+    for(ll c_ = 1e9 + 1; c_ <= 1e18 and !flag; c_++){
+        ll x = c_ ^ n;
+        if(x >= 1LL && x <= 1e18){
+            d = x;
+            c = c_;
+            flag = true;
+            break;
+        }
+    }
+    if(flag)
+        cout << a << ' ' << b << ' ' << c << ' ' << d << '\n';
+    else minus;
 }
 int main(){
     fast
@@ -42,4 +52,4 @@ int main(){
     while(t--){
         solve();
     }
-}
+} 

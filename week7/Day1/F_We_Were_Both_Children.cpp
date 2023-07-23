@@ -1,4 +1,3 @@
-
 /*
        || Mahir Hasan ||
 */
@@ -21,19 +20,29 @@ using namespace std;
 
 void solve(){
     int n; cin >> n;
-    int ans;
-    ll p = 1;
-    while(true)
-    {
-        if(p == n){
-            print(p - 1); return;
-        }
-        if(p > n){
-            ans = p/2; break;
-        }
-        p *= 2;
+    vector<int> a(n);
+    int mx = INT_MIN;
+    for(int i = 0; i < n; i++){
+        cin >> a[i];
+        mx = max(mx, a[i]);
     }
-    print(ans - 1);
+    if(a.size() == 1){
+        print(0);
+        return;
+    }
+    map<ll,int> mp;
+    for(int i = 0; i < n; i++){
+        for(ll j = a[i]; j <= mx;){
+            mp[j]++;
+            j += a[i];
+        }
+    }
+    int ans = INT_MIN;
+    for(int i = 0; i < n; i++){
+        if(a[i] >= 1 && a[i] <= n)
+            ans = max(ans, mp[a[i]]);
+    }
+    print(ans);
 }
 int main(){
     fast

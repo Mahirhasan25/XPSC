@@ -1,4 +1,3 @@
-
 /*
        || Mahir Hasan ||
 */
@@ -20,20 +19,15 @@
 using namespace std;
 
 void solve(){
-    int n; cin >> n;
-    int ans;
-    ll p = 1;
-    while(true)
-    {
-        if(p == n){
-            print(p - 1); return;
-        }
-        if(p > n){
-            ans = p/2; break;
-        }
-        p *= 2;
-    }
-    print(ans - 1);
+    int n;
+    cin >> n;
+    vector<int> v(n);
+    for(int i = 0; i < n; i++) cin >> v[i];
+    sort(all(v), greater<int>());
+    int ans = v[0];
+    for(int i = 1; i < n; i++)
+        ans &= v[i];
+    print(ans);
 }
 int main(){
     fast

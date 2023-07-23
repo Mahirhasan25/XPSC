@@ -1,4 +1,3 @@
-
 /*
        || Mahir Hasan ||
 */
@@ -20,20 +19,12 @@
 using namespace std;
 
 void solve(){
-    int n; cin >> n;
-    int ans;
-    ll p = 1;
-    while(true)
-    {
-        if(p == n){
-            print(p - 1); return;
-        }
-        if(p > n){
-            ans = p/2; break;
-        }
-        p *= 2;
-    }
-    print(ans - 1);
+    int n, std;
+    cin >> n >> std;
+    vector<int> mrk(n);
+    for(int i = 0; i < n; i++) cin >> mrk[i];
+    sort(mrk.rbegin(), mrk.rend());
+    print(mrk[std - 1] - 1);
 }
 int main(){
     fast
