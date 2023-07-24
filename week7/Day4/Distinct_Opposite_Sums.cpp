@@ -20,29 +20,9 @@ using namespace std;
 
 void solve(){
     int n; cin >> n;
-    vector<int> a(n);
-    int mx = INT_MIN;
-    for(int i = 0; i < n; i++){
-        cin >> a[i];
-        mx = max(mx, a[i]);
-    }
-    if(a.size() == 1){
-        print(0);
-        return;
-    }
-    map<ll,int> mp;
-    for(int i = 0; i < n; i++){
-        for(ll j = a[i]; j <= mx;){
-            mp[j]++;
-            j += a[i];
-        }
-    }
-    int ans = INT_MIN;
-    for(int i = 0; i < n; i++){
-        if(a[i] >= 1 && a[i] <= n)
-            ans = max(ans, mp[a[i]]);
-    }
-    print(ans);
+    for(int i = 1; i <= n/2; i++) cout << i << ' ';
+    for(int i = n; i > n/2; i--) cout << i << ' ';
+    cout << '\n';
 }
 int main(){
     fast
