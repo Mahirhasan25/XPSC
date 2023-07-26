@@ -19,21 +19,14 @@
 using namespace std;
 
 void solve(){
-    ll n; cin >> n;
-    vector<ll> cnt(n+1), tot(n+1);
+    int n; cin >> n;
+    int sum = 0;
     for(int i = 0; i < n; i++){
-        ll in; cin >> in;
-        if(in <= n) cnt[in]++;
+        int in; cin >> in;
+        sum += in;
     }
-    for(int i = 1; i <=  n; i++){
-        for(int j = i; j <= n; j += i){
-            tot[j] += cnt[i];
-        }
-    }
-    ll mx = 0;
-    for(auto i : tot)
-        mx = max(mx, i);
-    print(mx);
+    if(sum & 1) cno;
+    else cyes;
 }
 int main(){
     fast

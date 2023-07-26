@@ -19,22 +19,17 @@
 using namespace std;
 
 void solve(){
-    ll a = 1, b = 4, c = 0, d = 0;
+    ll a = 1, b = 2, c, d;
     ll n; 
     cin >> n;
     bool flag = false;
-    for(ll c_ = 1; c_ <= 1e9; c_++){
-        ll x = c_ ^ n;
-        if(x >= 1LL && x <= 1e18){
-            d = x;
-            c = c_;
-            flag = true;
-            break;
-        }
+    if(n == 0){
+        cout << 2 << ' ' << 3 << ' ' << 4 << ' ' << 6 << '\n';
+        return;
     }
-    for(ll c_ = 1e9 + 1; c_ <= 1e18 and !flag; c_++){
+    for(ll c_ = 3; c_ <= 1e6; c_++){
         ll x = c_ ^ n;
-        if(x >= 1LL && x <= 1e18){
+        if(x > 2 && c_ != x){
             d = x;
             c = c_;
             flag = true;

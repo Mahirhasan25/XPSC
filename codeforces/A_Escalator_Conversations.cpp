@@ -19,21 +19,27 @@
 using namespace std;
 
 void solve(){
-    ll n; cin >> n;
-    vector<ll> cnt(n+1), tot(n+1);
+    int n, m, k, h;
+    cin >> n >> m >> k >> h;
+    vector<int> a(n), dif;
     for(int i = 0; i < n; i++){
-        ll in; cin >> in;
-        if(in <= n) cnt[in]++;
+        cin >> a[i];
+        a[i] += h;
     }
-    for(int i = 1; i <=  n; i++){
-        for(int j = i; j <= n; j += i){
-            tot[j] += cnt[i];
+    for(int i = 0; i < n - 1; i++){
+        for(int j = i + 1; j < n; j++){
+            dif.pub(abs(a[i] - a[j]));
         }
     }
-    ll mx = 0;
-    for(auto i : tot)
-        mx = max(mx, i);
-    print(mx);
+    map<ll,bool> mp;
+    for(int i = 1; i <= m; i++){
+        mp[i*k] = true;
+    }
+    int cnt = 0;
+    for(int i = 0; i < dif.size(); i++){
+        if(mp[dif[i]]) cnt++;
+    }
+    print(cnt);
 }
 int main(){
     fast
