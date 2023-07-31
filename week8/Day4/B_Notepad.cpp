@@ -18,14 +18,19 @@
     cin.tie(NULL);
 using namespace std;
 
-void solve() {
-    int n,m,k,H; cin >> n >> m >> k >> H;
-    int ans = 0;
-    for(int i = 0; i < n; i++) {
-        int x; cin >> x;
-        ans += (H != x) && abs(H - x) % k == 0 && abs(H-x) <= (m-1) * k;
+void solve(){
+    int n; cin >> n;
+    string s; cin >> s;
+    unordered_map<string, int> cur;
+    for(int i = 0; i < n; i++){
+        string t = s.substr(i, 2);
+        if(cur.find(t) != cur.end()){
+            if(cur[t] < i - 1){
+                cyes; return;
+            }
+        }else cur[t] = i;
     }
-    cout << ans << endl;
+    cno;
 }
 int main(){
     fast

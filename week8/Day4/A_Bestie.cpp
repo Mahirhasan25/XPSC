@@ -17,16 +17,23 @@
 #define fast ios_base::sync_with_stdio(false);\
     cin.tie(NULL);
 using namespace std;
-
-void solve() {
-    int n,m,k,H; cin >> n >> m >> k >> H;
-    int ans = 0;
-    for(int i = 0; i < n; i++) {
-        int x; cin >> x;
-        ans += (H != x) && abs(H - x) % k == 0 && abs(H-x) <= (m-1) * k;
-    }
-    cout << ans << endl;
+int gcd(int a, int b){
+    if(b == 0) return a;
+    return gcd(b, a % b);
 }
+void solve(){
+    int n; cin >> n;
+    vector<int> a(n);
+    for(int i = 0; i < n; i++) cin >> a[i];
+    int g = a[0];
+    for(int i = 1; i < n; i++){
+        g = gcd(g, a[i]);
+    }
+    if(g == 1) print(0);
+    else if(gcd(g, n) == 1) print(1);
+    else if(gcd(g, n - 1) == 1) print(2);
+    else print(3);
+} 
 int main(){
     fast
     int t; 
