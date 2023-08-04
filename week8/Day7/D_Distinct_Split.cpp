@@ -25,22 +25,18 @@ void solve()
     cin >> n;
     string s;
     cin >> s;
-    unordered_map<char, bool> vis;
+    unordered_map<char, int> f_b;
+    for(int i = 0; i < n; i++)
+        f_b[s[i]]++;
+    set<char> f_a;
     int ans = 0;
-    int i;
-    for (i = 0; i < n; i++)
-    {
-        if (vis[s[i]] == true)
-            break;
-        ans++;
-        vis[s[i]] = true;
-    }
-    vis.clear();
-    for (int j = i; j < n; j++)
-    {
-        if (vis[s[j]] == false)
-            ans++;
-        vis[s[j]] = true;
+    for(int i = 0; i < n; i++){
+        f_a.insert(s[i]);
+        f_b[s[i]]--;
+        if(f_b[s[i]] == 0)
+            f_b.erase(s[i]);
+        int x = (f_a.size() + f_b.size()); 
+        ans = max(ans, x);
     }
     print(ans);
 }

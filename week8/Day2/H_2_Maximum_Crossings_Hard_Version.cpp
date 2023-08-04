@@ -3,6 +3,9 @@
 */
 
 #include <bits/stdc++.h>
+#include<bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
 #define ll long long int
 #define vpair vector<pair<ll, ll>>
 #define PI 3.14159265359
@@ -16,23 +19,23 @@
 #define all(x) (x).begin(),(x).end()
 #define fast ios_base::sync_with_stdio(false);\
     cin.tie(NULL);
+using namespace __gnu_pbds;
 using namespace std;
-
+template<typename T> using ordered_set = tree<T, null_type, less_equal<T>,rb_tree_tag,
+tree_order_statistics_node_update>;
 void solve(){
-    int n; cin >> n;
-    vector<ll> a(n);
-    int minus_cnt = 0;
-    ll sum = 0;
-    ll mn = INT_MAX;
-    for(int i = 0; i < n; i++){
-        cin >> a[i];
-        if(a[i] < 0) minus_cnt++;
-        ll tm = abs(a[i]);
-        sum += tm;
-        mn = min(mn, tm);
+    ll n; cin >> n;
+    ll ans = 0;
+    ordered_set<ll> s;
+    for(ll i = 0; i < n; i++){
+        int in; cin >> in;
+        if(i == 0) s.insert(in);
+        else{
+            ans += (s.size() - (s.order_of_key(in)));
+            s.insert(in);
+        }
     }
-    if(minus_cnt & 1) print(sum - 2*mn);
-    else print(sum);
+    print(ans);
 }
 int main(){
     fast
