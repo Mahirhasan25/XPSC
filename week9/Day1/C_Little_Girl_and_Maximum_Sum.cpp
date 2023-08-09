@@ -21,11 +21,11 @@ using namespace std;
 void solve(){
     int n, q;
     cin >> n >> q;
-    vector<int> a(n + 1);
+    vector<ll> a(n + 1);
     for(int i = 1; i <= n; i++)
         cin >> a[i];
 
-    vector<int> cnt(n+2), pre(n+2);
+    vector<ll> cnt(n+2), pre(n+2);
     while(q--){
         int l, r;
         cin >> l >> r;
@@ -35,8 +35,8 @@ void solve(){
     for(int i = 1; i < n + 2; i++)
         pre[i] = pre[i - 1] + cnt[i];
 
-    sort(all(a), greater<int>());
-    sort(all(pre), greater<int>());
+    sort(all(a), greater<ll>());
+    sort(all(pre), greater<ll>());
 
     ll sum = 0;
     for(int i = 0; i < n; i++)
