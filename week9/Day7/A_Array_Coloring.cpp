@@ -19,15 +19,14 @@
 using namespace std;
 
 void solve(){
-    ll n; cin >> n;
-    ll sum = 0;
+    int n; cin >> n;
+    int sum = 0;
     for(int i = 0; i < n; i++){
         int in; cin >> in;
         sum += in;
     }
-    if(sum / n == 1 && sum % n == 0) print(0);
-    else if(sum > n) print(sum - n);
-    else print(1);
+    if(sum & 1) cno;
+    else cyes;
 }
 int main(){
     fast

@@ -19,15 +19,27 @@
 using namespace std;
 
 void solve(){
-    ll n; cin >> n;
-    ll sum = 0;
-    for(int i = 0; i < n; i++){
-        int in; cin >> in;
-        sum += in;
+    string s; cin >> s;
+    vector<int> a(s.size()+1);
+    for(int i = 0; i < s.size(); i++){
+        a[i + 1] = s[i] - '0';
     }
-    if(sum / n == 1 && sum % n == 0) print(0);
-    else if(sum > n) print(sum - n);
-    else print(1);
+    vector<int> b = a;
+    for(int i = s.size(); i >= 0; i--){
+        if(a[i] >= 5){
+            while(a[i-1] >= 9) i--;
+            a[i-1]++;
+        }
+    }
+    for(int i = 0; i <= s.size(); i++){
+        if(i == 0 && a[i] == 0) continue;
+        if(a[i] != b[i]){
+            cout << a[i];
+            for(i += 1; i <= s.size(); i++)
+                cout << 0;
+        }else cout << a[i];
+    }
+    cout << '\n';
 }
 int main(){
     fast

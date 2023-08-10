@@ -19,15 +19,24 @@
 using namespace std;
 
 void solve(){
-    ll n; cin >> n;
-    ll sum = 0;
-    for(int i = 0; i < n; i++){
+    int n; cin >> n;
+    list<int> l;
+    for(int i = 0; i < (n*(n-1))/2; i++){
         int in; cin >> in;
-        sum += in;
+        l.push_back(in);
     }
-    if(sum / n == 1 && sum % n == 0) print(0);
-    else if(sum > n) print(sum - n);
-    else print(1);
+    l.sort();
+    int mn;
+    for(int i = 1;!l.empty(); i++){
+
+        mn = INT_MAX;
+        for(int j = 0; j < n - i && !l.empty(); j++){
+            mn = min(mn, l.front());
+            l.pop_front();
+        }
+        cout << mn << ' ';
+    }
+    print(mn);
 }
 int main(){
     fast
