@@ -23,8 +23,8 @@ int main()
     fast int n, x;
     while (cin >> n >> x)
     {
+        int mx = 0;
         vector<int> a(n);
-        int mx;
         for (int i = 0; i < n; i++)
         {
             cin >> a[i];
@@ -35,7 +35,7 @@ int main()
         while (l <= r)
         {
             int cap = l + (r - l) / 2;
-            int cnt = 0;
+            int cnt = 1;
             ll s = 0;
             for (int i = 0; i < n; i++)
             {
