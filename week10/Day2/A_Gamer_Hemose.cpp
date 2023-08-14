@@ -19,15 +19,29 @@
 using namespace std;
 
 void solve(){
-    int n; cin >> n;
-    ll z_cnt = 0;
-    ll one_cnt = 0;
-    for(int i = 0; i < n; i++){
-        int in; cin >> in;
-        if(in == 0) z_cnt++;
-        else if(in == 1) one_cnt++;
+    int n, h;
+    cin >> n >> h;
+    ll ar[n];
+    for(auto &i : ar) cin >> i;
+    sort(ar, ar + n, greater<int>());
+    // for(auto i : ar) cout << i << ' ';
+    // cout << '\n';
+    int mx1 = ar[0], mx2 = ar[1];
+    // cout << mx1 << ' ' << mx2 << '\n';
+    bool flag = true;
+    int ans = 0;
+    while(h > 0){
+        if(flag){
+            h -= mx1;
+            flag = false;
+            ans++;
+        }else{
+            h -= mx2;
+            flag = true;
+            ans++;
+        }
     }
-    print((1LL << z_cnt) * one_cnt);
+    print(ans);
 }
 int main(){
     fast

@@ -19,15 +19,11 @@
 using namespace std;
 
 void solve(){
-    int n; cin >> n;
-    ll z_cnt = 0;
-    ll one_cnt = 0;
-    for(int i = 0; i < n; i++){
-        int in; cin >> in;
-        if(in == 0) z_cnt++;
-        else if(in == 1) one_cnt++;
-    }
-    print((1LL << z_cnt) * one_cnt);
+    ll a, b, c;
+    cin >> a >> b >> c;
+    ll sum = abs(a+c-2*b);
+    if(sum % 3 == 0) print(0);
+    else print(1);
 }
 int main(){
     fast

@@ -20,14 +20,12 @@ using namespace std;
 
 void solve(){
     int n; cin >> n;
-    ll z_cnt = 0;
-    ll one_cnt = 0;
-    for(int i = 0; i < n; i++){
+    int mx = 0;
+    for(int i = 1; i <= n; i++){
         int in; cin >> in;
-        if(in == 0) z_cnt++;
-        else if(in == 1) one_cnt++;
+        mx = max(mx, in - i);
     }
-    print((1LL << z_cnt) * one_cnt);
+    print(mx);
 }
 int main(){
     fast
