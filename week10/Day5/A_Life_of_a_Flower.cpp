@@ -19,24 +19,17 @@
 using namespace std;
 
 void solve(){
-    int n, h;
-    cin >> n >> h;
-    ll ar[n];
-    for(auto &i : ar) cin >> i;
-    sort(ar, ar + n, greater<int>());
-    int mx1 = ar[0], mx2 = ar[1];
-    bool flag = true;
-    int ans = 0;
-    while(h > 0){
-        if(flag){
-            h -= mx1;
-            flag = false;
+    int n; cin >> n;
+    int ar[n];
+    for(int i = 0; i < n; i++) cin >> ar[i];
+    int ans = 1;
+    for(int i = 0; i < n; i++){
+        if(i == 0 and ar[i] == 1) ans++;
+        if(i != 0 and ar[i] == 0 and ar[i - 1] == 0){
+            ans = -1; break;
+        }else if(i != 0 and ar[i] == 1 and ar[i - 1] == 0){
             ans++;
-        }else{
-            h -= mx2;
-            flag = true;
-            ans++;
-        }
+        }else if(i != 0 and ar[i] == 1 and ar[i - 1] == 1) ans += 5;
     }
     print(ans);
 }
