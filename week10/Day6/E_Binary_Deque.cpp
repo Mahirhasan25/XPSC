@@ -12,37 +12,45 @@
 #define minus cout << "-1" << '\n'
 #define pub push_back
 #define pob pop_back
-#define rep(x, y) for(int i = x; i < y; i++)
-#define all(x) (x).begin(),(x).end()
-#define fast ios_base::sync_with_stdio(false);\
+#define rep(x, y) for (int i = x; i < y; i++)
+#define all(x) (x).begin(), (x).end()
+#define fast                          \
+    ios_base::sync_with_stdio(false); \
     cin.tie(NULL);
 using namespace std;
 
-void solve(){
+void solve()
+{
     int n, s;
     cin >> n >> s;
     int ar[n];
-    for(auto &i : ar) cin >> i;
+    for (auto &i : ar)
+        cin >> i;
     int l = 0, r = 0;
-    ll cmp = 0;int mx = INT_MIN;
-    while(r < n){
-        s += ar[r];
-        if(cmp < s){
-            r++;
-        }
-        else if(cmp == s){
-            mx = max(mx, r - l + 1);
+    ll cmp = 0;
+    int mx = INT_MIN;
+    while (r < n)
+    {
+        cmp += ar[r];
+        if (cmp > s)
+        {
+            mx = max(mx, r - l);
             l++;
-            r = l;
+            r = l-1;
+            cmp = 0;
         }
+        r++;
     }
-    print(mx);
+    if(cmp == s)
+        mx = max(mx, r - l);
+    mx == INT_MIN ? print(-1) : print(n - mx);
 }
-int main(){
-    fast
-    int t; 
+int main()
+{
+    fast int t;
     cin >> t;
-    while(t--){
+    while (t--)
+    {
         solve();
     }
 }
