@@ -12,38 +12,54 @@
 #define minus cout << "-1" << '\n'
 #define pub push_back
 #define pob pop_back
-#define rep(x, y) for(int i = x; i < y; i++)
-#define all(x) (x).begin(),(x).end()
-#define fast ios_base::sync_with_stdio(false);\
+#define rep(x, y) for (int i = x; i < y; i++)
+#define all(x) (x).begin(), (x).end()
+#define fast                          \
+    ios_base::sync_with_stdio(false); \
     cin.tie(NULL);
 using namespace std;
 
-void solve(){
+void solve()
+{
     int n, k, x;
     cin >> n >> k >> x;
-    if(x != 1){
+    if (x != 1)
+    {
         cout << "YES" << '\n';
-        print(n);
-        for(int i = 0; i < n; i++) cout << 1 << ' ';
-    }else{
-        if(k >= 2 && n % 2 == 0){
-            cout << "YES" << '\n';
-            print(n/2);
-            for(int i = 0; i < n/2; i++) cout << 2 << ' ';
-        }else if(k >= 3){
-            cout << "YES" << '\n';
-            print(n/2);
-            cout << 3 << ' ';
-            for(int i = 0; i < n/2; i++) cout << 2 << ' ';
-        }else cout << "NO";
+        cout << n << '\n';
+        for (int i = 0; i < n; i++)
+            cout << 1 << ' ';
+        cout << '\n';
     }
-    cout << '\n';
+    else
+    {
+        if (k >= 2 && n % 2 == 0)
+        {
+            cout << "YES" << '\n';
+            cout << n / 2 << '\n';
+            for (int i = 0; i < n / 2; i++)
+                cout << 2 << ' ';
+            cout << '\n';
+        }
+        else if (k >= 3)
+        {
+            cout << "YES" << '\n';
+            cout << n / 2 << '\n';
+            cout << 3 << ' ';
+            for (int i = 1; i < n / 2; i++)
+                cout << 2 << ' ';
+            cout << '\n';
+        }
+        else
+            cout << "NO" << '\n';
+    }
 }
-int main(){
-    fast
-    int t; 
+int main()
+{
+    fast int t;
     cin >> t;
-    while(t--){
+    while (t--)
+    {
         solve();
     }
 }
