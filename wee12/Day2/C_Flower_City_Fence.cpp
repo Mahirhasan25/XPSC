@@ -9,6 +9,7 @@
 #define cyes cout << "YES" << '\n'
 #define cno cout << "NO" << '\n'
 #define print(x) cout << x << '\n'
+#define minus cout << "-1" << '\n'
 #define pub push_back
 #define pob pop_back
 #define rep(x, y) for(int i = x; i < y; i++)
@@ -17,20 +18,31 @@
     cin.tie(NULL);
 using namespace std;
 
-int main(){
-    fast
-    ll n, k;
-    cin >> n >> k;
-    vector<ll> prime;
-    for(ll i = 1; i * i <= n; i++){
-        if(n % i == 0){
-            prime.pub(i);
-            if(i * i != n){
-                prime.pub(n/i);
-            }
+void solve(){
+    int n; cin >> n;
+    vector<int> v(n+1);
+    for(int i = 1; i <= n; i++) cin >> v[i];
+    if(v[1] != n){
+        cno; return;
+    }
+    vector<int> b;
+    for(int i = n; i >= 1; i--){
+        while(b.size() < v[i]){
+            b.push_back(i);
         }
     }
-    sort(all(prime));
-    if(prime.size() < k) print(-1);
-    else print(prime[k-1]);
+    for(int i = 1; i < n; i++){
+        if(v[i] != b[i - 1]){
+            cno; return;
+        }
+    }
+    cyes;
+}
+int main(){
+    fast
+    int t; 
+    cin >> t;
+    while(t--){
+        solve();
+    }
 }
