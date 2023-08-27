@@ -73,7 +73,7 @@ void solve()
             r++;
             flag = true;
         }
-        if (v[l] == val && v[r] == val && r < n)
+        if (v[l] == val && v[r] == val && r < n && l < n)
         {
             mn_sb_arr = min(mn_sb_arr, r - l + 1);
             l = r;
