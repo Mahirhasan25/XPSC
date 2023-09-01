@@ -30,7 +30,7 @@ void solve()
         cin >> in;
         s.insert(in);
     }
-    if (n == 1)
+    if (s.size() == 1)
     {
         print(0);
     }
