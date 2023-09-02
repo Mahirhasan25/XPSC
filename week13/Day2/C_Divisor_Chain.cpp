@@ -19,28 +19,26 @@
 using namespace std;
 
 void solve(){
-    int n, k, d;
-    cin >> n >> k >> d;
-    vector<int> v(n);
-    for(int i = 0; i < n; i++){
-        cin >> v[i];
+    int x, i = 0;
+    cin >> x;
+    vector<int> ans;
+    while ((1 << i) <= x)
+    {
+        ans.push_back((1 << i));
+        i++;
     }
-    int i = 0, j = 0;
-    int mn = INT_MAX;
-    unordered_map<int, int> cnt;
-    while(j < n){
-        cnt[v[j]]++;
-        if(j - i + 1 < d) j++;
-        else{
-            mn = min(mn, (int)cnt.size());
-            cnt[v[i]]--;
-            if(cnt[v[i]] == 0) 
-                cnt.erase(v[i]);
-            i++;
-            j++;
+    if(ans.back() != x){
+        int diff = x - ans.back();
+        for(int i = 30; i >= 0; i--){
+            if(diff & (1 << i)){
+                ans.push_back(ans.back() + (1 << i));
+            }
         }
     }
-    print(mn);
+    reverse(all(ans));
+    print((int)ans.size());
+    for(auto i : ans) cout << i << ' ';
+    cout << '\n';
 }
 int main(){
     fast

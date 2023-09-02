@@ -19,28 +19,27 @@
 using namespace std;
 
 void solve(){
-    int n, k, d;
-    cin >> n >> k >> d;
-    vector<int> v(n);
+    int n, k;
+    cin >> n >> k;
+    vector<int> a(n);
+    vector<bool> vis(n+1);
     for(int i = 0; i < n; i++){
-        cin >> v[i];
+        cin >> a[i];
+        vis[a[i]] = true;
     }
-    int i = 0, j = 0;
-    int mn = INT_MAX;
-    unordered_map<int, int> cnt;
-    while(j < n){
-        cnt[v[j]]++;
-        if(j - i + 1 < d) j++;
-        else{
-            mn = min(mn, (int)cnt.size());
-            cnt[v[i]]--;
-            if(cnt[v[i]] == 0) 
-                cnt.erase(v[i]);
-            i++;
-            j++;
-        }
+    int mising = -1;
+    for(int i = 0; i <= n; i++){
+        if(vis[i] == false) mising = i;
     }
-    print(mn);
+    deque<int> dq(all(a));
+    k %= n+1;
+    for(int i = 0; i < k; i++){
+        dq.push_front(mising);
+        mising = dq.back();
+        dq.pop_back();
+    }
+    for(auto i : dq) cout << i << ' ';
+    cout << '\n';
 }
 int main(){
     fast
