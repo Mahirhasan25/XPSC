@@ -21,25 +21,32 @@ using namespace std;
 
 void solve()
 {
-    ll n;
+    int n;
     cin >> n;
-    string s;
-    cin >> s;
-    ll ans = 0;
-    unordered_map<ll, bool> vis;
-    for (ll i = 0; i < n; i++)
+    vector<int> v(3);
+    for (int i = 0; i < n; i++)
     {
-        if (s[i] == '0')
-        {
-            for (ll j = i + 1; j <= n; j += i + 1)
-            {
-                if (s[j - 1] == '1')
-                    break;
-                if (vis[j])
-                    continue;
-                ans += i+1;
-                vis[j] = true;
-            }
+        int in;
+        cin >> in;
+        v[in % 3]++;
+    }
+    int x = n/3;
+    int ans = 0;
+    for(int i = 0; i < 2; i++){
+        if(v[0] > x){
+            ans += v[0] - x;
+            v[1] += v[0] - x;
+            v[0] = x;
+        }
+        if(v[1] > x){
+            ans += v[1] - x;
+            v[2] += v[1] - x;
+            v[1] = x;
+        }
+        if(v[2] > x){
+            ans += v[2] - x;
+            v[0] += v[2] - x;
+            v[2] = x;
         }
     }
     print(ans);
