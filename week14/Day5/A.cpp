@@ -20,20 +20,21 @@ using namespace std;
 
 void solve(){
     int n; cin >> n;
+    vpair v;
     for(int i = 0; i < n; i++){
         int in; cin >> in;
+        v.pub({in, i});
     }
-    if(n & 1){
-        cout << 4 << '\n';
-        cout << 1 << ' ' << n-1 << '\n';
-        cout << 1 << ' ' << n-1 << '\n';
-        cout << n-1 << ' ' << n << '\n';
-        cout << n-1 << ' ' << n << '\n';
-    }else{
-        cout << 2 << '\n';
-        cout << 1 << ' ' << n << '\n';
-        cout << 1 << ' ' << n << '\n';
+    sort(all(v), greater<pair<ll, ll>>());
+    vpair a;
+    for(int i = 0; i < n; i++){
+        a.pub({v[i].second, i+1});
     }
+    sort(all(a));
+    for(auto i : a){
+        cout  << i.second << ' ';
+    }
+    cout << '\n';
 }
 int main(){
     fast
