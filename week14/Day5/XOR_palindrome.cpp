@@ -21,37 +21,42 @@ using namespace std;
 
 void solve()
 {
-    ll n, d;
-    cin >> n >> d;
-    vector<ll> a(n);
-    for (auto &i : a)
-        cin >> i;
-    sort(all(a), greater<ll>());
-    int team = 0; int j = n - 1;
-    for (int i = 0; i < n; i++)
+    ll n;
+    cin >> n;
+    string s;
+    cin >> s;
+    string ans = "";
+    ll mis = 0, gp = 0;
+    ll l = 0, r = n - 1;
+    while (l < r)
     {
-        ll tm = a[i];
-        if (tm > d)
-        {
-            team++;
-        }
+        if (s[l] == s[r])
+            gp += 2;
         else
-        {
-            while (tm <= d && i < j)
-            {
-                tm += a[i];
-                j--;
-            }
-            if(tm > d)
-                team++;
-        }
+            mis++;
+        l++, r--;
     }
-    print(team);
+    for (ll i = 0; i <= n; i++)
+    {
+        ll tot = i;
+        tot -= mis;
+        if(tot < 0LL){
+            ans.pub('0');
+            continue;
+        }
+        tot = max((tot % 2LL), tot - gp);
+        tot = max(0LL,tot - (n % 2LL));
+        if(tot == 0)
+            ans.pub('1');
+        else 
+            ans.pub('0');
+    }
+    print(ans);
 }
 int main()
 {
-    fast int t = 1;
-    // cin >> t;
+    fast int t;
+    cin >> t;
     while (t--)
     {
         solve();
