@@ -21,7 +21,7 @@ using namespace std;
 void solve(){
     ll n, k, x;
     cin >> n >> k >> x;
-    if(n < k || k > x + 1LL){
+    if(n < k || k > x+1LL){
         print(-1);
         return;
     }
