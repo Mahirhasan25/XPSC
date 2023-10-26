@@ -19,34 +19,28 @@
 using namespace std;
 
 void solve(){
-    string s; cin >> s;
-    int ans = count(all(s), 'A');
-    if(s[0] == 'B' || s.back() == 'B')
+    int n; cin >> n;
+    vector<int> v(n);
+    for(auto &i : v) cin >> i;
+    bool ok = true;
+    int i;
+    for(i = 0; i < n - 1; i++)
     {
-        print(ans);
-        return;
-    } 
-    vector<int> pos;
-    for(int i = 0; i < s.size(); i++)
-    {
-        if(s[i] == 'B')
+        if(v[i] > v[i+1])
         {
-            pos.pub(i);
+            break;
         }
     }
-    if(pos.empty())
+    for(int j = i; j < n - 1; j++)
     {
-        print(0);
-        return;
-    } 
-    int mn = 1 << 30;
-    for(int i = 1; i < pos.size(); i++)
-    {
-        mn = min(mn, pos[i] - pos[i - 1] - 1);
+        if(v[j] < v[j+1])
+        {
+            ok = false;
+            break;
+        }
     }
-    mn = min(mn, pos[0]);
-    mn = min(mn, (int)(s.size() - pos.back() - 1));
-    print(ans - mn);
+    if(ok) cyes;
+    else cno;
 }
 int main(){
     fast

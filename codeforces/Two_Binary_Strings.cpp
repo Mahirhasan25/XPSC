@@ -19,34 +19,15 @@
 using namespace std;
 
 void solve(){
-    string s; cin >> s;
-    int ans = count(all(s), 'A');
-    if(s[0] == 'B' || s.back() == 'B')
+    string a, b; cin >> a >> b;
+    for(int i = 0; i < a.size() - 1; i++)
     {
-        print(ans);
-        return;
-    } 
-    vector<int> pos;
-    for(int i = 0; i < s.size(); i++)
-    {
-        if(s[i] == 'B')
+        if((a[i] == '0' && b[i] == '0') and (a[i+1] == '1' && b[i+1] == '1'))
         {
-            pos.pub(i);
+            cyes; return;
         }
     }
-    if(pos.empty())
-    {
-        print(0);
-        return;
-    } 
-    int mn = 1 << 30;
-    for(int i = 1; i < pos.size(); i++)
-    {
-        mn = min(mn, pos[i] - pos[i - 1] - 1);
-    }
-    mn = min(mn, pos[0]);
-    mn = min(mn, (int)(s.size() - pos.back() - 1));
-    print(ans - mn);
+    cno;    
 }
 int main(){
     fast

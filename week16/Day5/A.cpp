@@ -19,34 +19,17 @@
 using namespace std;
 
 void solve(){
-    string s; cin >> s;
-    int ans = count(all(s), 'A');
-    if(s[0] == 'B' || s.back() == 'B')
+    int n, k;
+    cin >> n >> k;
+    vector<int> v(n);
+    for(auto &i : v) cin >> i;
+    unordered_map<int, int> occ;
+    for(auto i : v)
     {
-        print(ans);
-        return;
-    } 
-    vector<int> pos;
-    for(int i = 0; i < s.size(); i++)
-    {
-        if(s[i] == 'B')
-        {
-            pos.pub(i);
-        }
+        occ[i]++;
     }
-    if(pos.empty())
-    {
-        print(0);
-        return;
-    } 
-    int mn = 1 << 30;
-    for(int i = 1; i < pos.size(); i++)
-    {
-        mn = min(mn, pos[i] - pos[i - 1] - 1);
-    }
-    mn = min(mn, pos[0]);
-    mn = min(mn, (int)(s.size() - pos.back() - 1));
-    print(ans - mn);
+    if(occ[k]) cyes;
+    else cno;
 }
 int main(){
     fast

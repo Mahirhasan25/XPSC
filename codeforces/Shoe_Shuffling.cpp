@@ -19,34 +19,42 @@
 using namespace std;
 
 void solve(){
-    string s; cin >> s;
-    int ans = count(all(s), 'A');
-    if(s[0] == 'B' || s.back() == 'B')
+    int n; cin >> n;
+    unordered_map<ll, ll> occ;
+    vector<pair<ll, ll>> v(n+1);
+    for(int i  = 1; i <= n; i++)
     {
-        print(ans);
-        return;
-    } 
-    vector<int> pos;
-    for(int i = 0; i < s.size(); i++)
+        v[i].first = i;
+        cin >> v[i].second;
+        occ[v[i].second]++;
+    }
+    bool ok = false;
+    for(auto i : occ)
     {
-        if(s[i] == 'B')
+        if(i.second < 2)
         {
-            pos.pub(i);
+            ok = true;
+            break;
         }
     }
-    if(pos.empty())
+    if(ok)
     {
-        print(0);
+        print(-1);
         return;
-    } 
-    int mn = 1 << 30;
-    for(int i = 1; i < pos.size(); i++)
-    {
-        mn = min(mn, pos[i] - pos[i - 1] - 1);
     }
-    mn = min(mn, pos[0]);
-    mn = min(mn, (int)(s.size() - pos.back() - 1));
-    print(ans - mn);
+    for(int i = 1; i < n; i++)
+    {
+        if(v[i].second == v[i + 1].second)
+        {
+            swap(v[i].first, v[i +  1].first);
+        }
+    }
+    for(auto i : v)
+    {
+        if(i.first != 0)
+            cout << i.first << ' ';
+    }
+    cout << '\n';
 }
 int main(){
     fast
